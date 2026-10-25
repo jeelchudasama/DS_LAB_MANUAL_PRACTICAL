@@ -1,0 +1,160 @@
+#include <stdio.h>
+
+#define SIZE 5
+
+int stack[SIZE], i, Top = -1;
+
+void push();
+void pop();
+void peep();
+void change();
+void display();
+
+int main()
+{
+    int opt;
+
+    printf("Stack operations:\n");
+    printf("Push : 1\n");
+    printf("Pop : 2\n");
+    printf("Peep : 3\n");
+    printf("Change : 4\n");
+    printf("Display : 5\n");
+    printf("Exit : any other\n");
+
+    while (1)
+    {
+        printf("Enter your option: ");
+        scanf("%d", &opt);
+
+        switch (opt)
+        {
+            case 1:
+                push();
+                break;
+
+            case 2:
+                pop();
+                break;
+
+            case 3:
+                peep();
+                break;
+
+            case 4:
+                change();
+                break;
+
+            case 5:
+                display();
+                break;
+
+            default:
+                printf("Program exited successfully\n");
+                return 0;
+        }
+    }
+}
+
+void push()
+{
+    int val;
+
+    printf("Enter value to insert into stack: ");
+    scanf("%d", &val);
+
+    if (Top == SIZE - 1)
+    {
+        printf("Stack overflow!\n");
+        return;
+    }
+
+    stack[++Top] = val;
+
+    printf("Value (%d) pushed to stack successfully!\n", val);
+}
+
+void pop()
+{
+    if (Top == -1)
+    {
+        printf("Stack underflow!\n");
+        return;
+    }
+
+    printf("Stack popped %d\n", stack[Top]);
+
+    Top--;
+}
+
+void peep()
+{
+    if (Top == -1)
+    {
+        printf("Stack is empty!\n");
+        return;
+    }
+
+    printf("Stack[%d] = %d\n", Top, stack[Top]);
+}
+
+void change()
+{
+    int index, value;
+
+    printf("Enter index of element to update value: ");
+    scanf("%d", &index);
+
+    printf("Enter value to assign: ");
+    scanf("%d", &value);
+
+    if (index >= 0 && index <= Top)
+    {
+        stack[index] = value;
+
+        printf("Stack element updated successfully!\n");
+    }
+    else
+    {
+        printf("Invalid index!\n");
+    }
+}
+
+void display()
+{
+    if (Top == -1)
+    {
+        printf("Stack is empty\n");
+        return;
+    }
+
+    for (i = 0; i <= Top; i++)
+    {
+        printf("Stack[%d] = %d\n", i, stack[i]);
+    }
+}
+
+//OUTPUT//
+
+Stack operations:
+Push : 1
+Pop : 2
+Peep : 3
+Change : 4
+Display : 5
+Exit : any other
+Enter your option: 1
+Enter value to insert into stack: 90
+Value (90) pushed to stack successfully!
+Enter your option: 1
+Enter value to insert into stack: 80
+Value (80) pushed to stack successfully!
+Enter your option: 5
+Stack[0] = 90
+Stack[1] = 80
+Enter your option: 2
+Stack popped 80
+Enter your option: 5
+Stack[0] = 90
+Enter your option: 0
+Program exited successfully
