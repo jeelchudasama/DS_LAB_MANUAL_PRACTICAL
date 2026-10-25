@@ -1,0 +1,66 @@
+#include <stdio.h>
+
+/* Call by value */
+void incrementByValue(int num)
+{
+    num = num + 10;
+    printf("Inside the function value is = %d\n", num);
+}
+
+/* Call by reference */
+void incrementByReference(int *num)
+{
+    *num = *num + 10;
+    printf("Inside the function value is = %d\n", *num);
+}
+
+/* Swapping using pointers */
+void swap(int *ptr1, int *ptr2)
+{
+    int temp;
+    temp = *ptr1;
+    *ptr1 = *ptr2;
+    *ptr2 = temp;
+}
+
+int main()
+{
+    int originalNum = 5;
+    int a = 10, b = 20;
+
+    printf("Call by value\n");
+    printf("Before calling value = %d\n", originalNum);
+    incrementByValue(originalNum);
+    printf("After calling value = %d\n", originalNum);
+
+    originalNum = 5;
+
+    printf("\nCall by reference\n");
+    printf("Before calling value = %d\n", originalNum);
+    incrementByReference(&originalNum);
+    printf("After calling value = %d\n", originalNum);
+
+    printf("\nSwapping\n");
+    printf("Before swapping a = %d, b = %d\n", a, b);
+    swap(&a, &b);
+    printf("After swapping a = %d, b = %d\n", a, b);
+
+    return 0;
+}
+
+
+
+//OUTPUT//
+Call by value
+Before calling value = 5
+Inside the function value is = 15
+After calling value = 5
+
+Call by reference
+Before calling value = 5
+Inside the function value is = 15
+After calling value = 15
+
+Swapping
+Before swapping a = 10, b = 20
+After swapping a = 20, b = 10
