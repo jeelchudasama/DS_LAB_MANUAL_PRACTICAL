@@ -1,0 +1,138 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define SIZE 5
+
+void enqueue();
+void dequeue();
+void display();
+
+int f = 0, r = -1, ch, i, que_arr[SIZE];
+
+int main()
+{
+    while (1)
+    {
+        printf("\n1. Enqueue\n");
+        printf("2. Dequeue\n");
+        printf("3. Display\n");
+        printf("4. End\n");
+
+        printf("ch = ");
+        scanf("%d", &ch);
+
+        switch (ch)
+        {
+            case 1:
+                enqueue();
+                break;
+
+            case 2:
+                dequeue();
+                break;
+
+            case 3:
+                display();
+                break;
+
+            case 4:
+                exit(0);
+
+            default:
+                printf("Invalid choice\n");
+        }
+    }
+
+    return 0;
+}
+
+void enqueue()
+{
+    int data;
+
+    if (r == SIZE - 1)
+    {
+        printf("overflow\n");
+    }
+    else
+    {
+        printf("Enter data = ");
+        scanf("%d", &data);
+
+        r = r + 1;
+        que_arr[r] = data;
+    }
+}
+
+void dequeue()
+{
+    if (f > r)
+    {
+        printf("underflow\n");
+    }
+    else
+    {
+        printf("del ele = %d\n", que_arr[f]);
+        printf("del successfully\n");
+
+        f = f + 1;
+    }
+}
+
+void display()
+{
+    if (f > r)
+    {
+        printf("underflow\n");
+    }
+    else
+    {
+        for (i = f; i <= r; i++)
+        {
+            printf("ele = %d\n", que_arr[i]);
+        }
+    }
+}
+
+
+
+
+//OUTPUT//
+
+1. Enqueue
+2. Dequeue
+3. Display
+4. End
+ch = 1
+Enter data = 10
+1. Enqueue
+2. Dequeue
+3. Display
+4. End
+ch = 1
+Enter data = 20
+1. Enqueue
+2. Dequeue
+3. Display
+4. End
+ch = 3
+ele = 10
+ele = 20
+1. Enqueue
+2. Dequeue
+3. Display
+4. End
+ch = 2
+del ele = 10
+del successfully
+1. Enqueue
+2. Dequeue
+3. Display
+4. End
+ch = 3
+ele = 20
+1. Enqueue
+2. Dequeue
+3. Display
+4. End
+ch = 4
